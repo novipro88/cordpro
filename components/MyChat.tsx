@@ -17,11 +17,14 @@ import MessageComposer from '@/components/MessageList/MessageComposer/MessageCom
 import CustomDateSeparator from '@/components/MessageList/CustomDateSeparator/CustomDateSeparator';
 import CustomMessage from '@/components/MessageList/CustomMessage/CustomMessage';
 import { customReactionOptions } from '@/components/MessageList/CustomReactions/CustomReactionsSelector';
+<<<<<<< HEAD
 import { useVideoClient } from '@/hooks/useVideoClient';
 import { StreamVideo } from '@stream-io/video-react-sdk';
 import { useDiscordContext } from '@/contexts/DiscordContext';
 import MyCall from '@/components/MyCall/MyCall';
 import CustomChannelHeader from './MessageList/CustomChannelHeader/CustomChannelHeader';
+=======
+>>>>>>> b342500b1a191689c766d72f7ee4e83c123f18c2
 
 export default function MyChat({
   apiKey,
@@ -37,17 +40,21 @@ export default function MyChat({
     user,
     tokenOrProvider: token,
   });
+<<<<<<< HEAD
   const videoClient = useVideoClient({
     apiKey,
     user,
     tokenOrProvider: token,
   });
   const { callId } = useDiscordContext();
+=======
+>>>>>>> b342500b1a191689c766d72f7ee4e83c123f18c2
 
   if (!chatClient) {
     return <div>Error, please try again later.</div>;
   }
 
+<<<<<<< HEAD
   if (!videoClient) {
     return <div>Video Error, please try again later.</div>;
   }
@@ -77,5 +84,27 @@ export default function MyChat({
         </section>
       </Chat>
     </StreamVideo>
+=======
+  return (
+    <Chat client={chatClient} theme='str-chat__theme-light'>
+      <section className='flex h-screen w-screen layout'>
+        <ServerList />
+        <ChannelList List={CustomChannelList} sendChannelsToList={true} />
+        <Channel
+          Message={CustomMessage}
+          Input={MessageComposer}
+          DateSeparator={CustomDateSeparator}
+          reactionOptions={customReactionOptions}
+        >
+          <Window>
+            <ChannelHeader />
+            <MessageList />
+            <MessageInput />
+          </Window>
+          <Thread />
+        </Channel>
+      </section>
+    </Chat>
+>>>>>>> b342500b1a191689c766d72f7ee4e83c123f18c2
   );
 }

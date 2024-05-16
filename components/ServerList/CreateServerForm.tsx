@@ -6,7 +6,10 @@ import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useChatContext } from 'stream-chat-react';
 import UserCard from './UserCard';
+<<<<<<< HEAD
 import { useStreamVideoClient } from '@stream-io/video-react-sdk';
+=======
+>>>>>>> b342500b1a191689c766d72f7ee4e83c123f18c2
 
 type FormState = {
   serverName: string;
@@ -15,6 +18,11 @@ type FormState = {
 };
 
 const CreateServerForm = () => {
+<<<<<<< HEAD
+=======
+  console.log('[CreateServerForm]');
+
+>>>>>>> b342500b1a191689c766d72f7ee4e83c123f18c2
   // Check if we are shown
   const params = useSearchParams();
   const showCreateServerForm = params.get('createServer');
@@ -23,7 +31,10 @@ const CreateServerForm = () => {
 
   // Data
   const { client } = useChatContext();
+<<<<<<< HEAD
   const videoClient = useStreamVideoClient();
+=======
+>>>>>>> b342500b1a191689c766d72f7ee4e83c123f18c2
   const { createServer } = useDiscordContext();
   const initialState: FormState = {
     serverName: '',
@@ -64,7 +75,11 @@ const CreateServerForm = () => {
 
   return (
     <dialog
+<<<<<<< HEAD
       className='absolute py-16 px-20 z-10 space-y-8 rounded-xl'
+=======
+      className='absolute py-16 px-20 z-10 space-y-8 rounded-xl serverDialog'
+>>>>>>> b342500b1a191689c766d72f7ee4e83c123f18c2
       ref={dialogRef}
     >
       <Link href='/' className='absolute right-8 top-8'>
@@ -154,6 +169,7 @@ const CreateServerForm = () => {
   }
 
   function createClicked() {
+<<<<<<< HEAD
     if (!videoClient) {
       console.log('[CreateServerForm] Video client not available');
       return;
@@ -161,6 +177,10 @@ const CreateServerForm = () => {
     createServer(
       client,
       videoClient,
+=======
+    createServer(
+      client,
+>>>>>>> b342500b1a191689c766d72f7ee4e83c123f18c2
       formData.serverName,
       formData.serverImage,
       formData.users.map((user) => user.id)

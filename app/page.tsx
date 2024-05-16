@@ -7,7 +7,11 @@ import { useClerk } from "@clerk/nextjs";
 import { useCallback, useEffect, useState } from "react";
 import MyChat from "@/components/MyChat";
 
+<<<<<<< HEAD
 const apiKey = "uemvyegzwzur";
+=======
+const apiKey = 'uemvyegzwzur';
+>>>>>>> b342500b1a191689c766d72f7ee4e83c123f18c2
 
 export type DiscordServer = {
   name: string;
@@ -21,6 +25,10 @@ export type Homestate = {
 };
 
 export default function Home() {
+<<<<<<< HEAD
+=======
+  console.log("[Create]");
+>>>>>>> b342500b1a191689c766d72f7ee4e83c123f18c2
   const [myState, setMyState] = useState<Homestate | undefined>(undefined);
 
   const { user: myUser } = useClerk();
@@ -28,7 +36,11 @@ export default function Home() {
   const registerUser = useCallback(
     async function registerUser() {
       // register user on Stream backend
+<<<<<<< HEAD
       console.log("[registerUser] myUser:", myUser);
+=======
+      console.log("[RU] myUser:", myUser);
+>>>>>>> b342500b1a191689c766d72f7ee4e83c123f18c2
       const userId = myUser?.id;
       const mail = myUser?.primaryEmailAddress?.emailAddress;
       if (userId && mail) {
@@ -43,7 +55,11 @@ export default function Home() {
           }),
         });
         const responseBody = await streamResponse.json();
+<<<<<<< HEAD
         console.log("[registerUser] Stream response:", responseBody);
+=======
+        console.log("Stream response:", responseBody);
+>>>>>>> b342500b1a191689c766d72f7ee4e83c123f18c2
         return responseBody;
       }
     },
@@ -56,9 +72,15 @@ export default function Home() {
       myUser?.primaryEmailAddress?.emailAddress &&
       !myUser?.publicMetadata.streamRegistered
     ) {
+<<<<<<< HEAD
       console.log("[Page - useEffect] Registering user on Stream backend");
       registerUser().then((result) => {
         console.log("[Page - useEffect] Result: ", result);
+=======
+      console.log("Registering user on Stream backend");
+      registerUser().then((result) => {
+        console.log("Result: ", result);
+>>>>>>> b342500b1a191689c766d72f7ee4e83c123f18c2
         getUserToken(
           myUser.id,
           myUser?.primaryEmailAddress?.emailAddress || "Unknown"
@@ -66,6 +88,7 @@ export default function Home() {
       });
     } else {
       // take user and get token
+<<<<<<< HEAD
       if (myUser?.id) {
         console.log(
           "[Page - useEffect] User already registered on Stream backend: ",
@@ -76,6 +99,13 @@ export default function Home() {
           myUser?.primaryEmailAddress?.emailAddress || "Unknown"
         );
       }
+=======
+      console.log("User already registered on Stream backend");
+      getUserToken(
+        myUser?.id || "Unknown",
+        myUser?.primaryEmailAddress?.emailAddress || "Unknown"
+      );
+>>>>>>> b342500b1a191689c766d72f7ee4e83c123f18c2
     }
   }, [registerUser, myUser]);
 

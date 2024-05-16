@@ -15,6 +15,10 @@ type FormState = {
 };
 
 export default function CreateChannelForm(): JSX.Element {
+<<<<<<< HEAD
+=======
+  console.log('[CreateChannelForm]');
+>>>>>>> b342500b1a191689c766d72f7ee4e83c123f18c2
   const params = useSearchParams();
   const showCreateChannelForm = params.get('createChannel');
   const category = params.get('category');
@@ -23,6 +27,10 @@ export default function CreateChannelForm(): JSX.Element {
 
   const { client } = useChatContext();
   const { createChannel } = useDiscordContext();
+<<<<<<< HEAD
+=======
+  console.log('[Category] category: ', category);
+>>>>>>> b342500b1a191689c766d72f7ee4e83c123f18c2
   const initialState: FormState = {
     channelName: '',
     category: category ?? '',
@@ -42,6 +50,13 @@ export default function CreateChannelForm(): JSX.Element {
   }, [loadUsers]);
 
   useEffect(() => {
+<<<<<<< HEAD
+=======
+    console.log(
+      '[CreateChannelForm] showCreateChannelForm',
+      showCreateChannelForm
+    );
+>>>>>>> b342500b1a191689c766d72f7ee4e83c123f18c2
     if (showCreateChannelForm && dialogRef.current) {
       dialogRef.current.showModal();
     } else {
@@ -51,7 +66,11 @@ export default function CreateChannelForm(): JSX.Element {
 
   return (
     <dialog
+<<<<<<< HEAD
       className='absolute py-16 px-20 z-10 space-y-8 rounded-xl'
+=======
+      className='absolute py-16 px-20 z-10 space-y-8 rounded-xl serverDialog'
+>>>>>>> b342500b1a191689c766d72f7ee4e83c123f18c2
       ref={dialogRef}
     >
       <Link href='/' className='absolute right-8 top-8'>

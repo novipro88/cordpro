@@ -17,6 +17,23 @@ const ServerList = () => {
       type: 'messaging',
       members: { $in: [client.userID as string] },
     });
+<<<<<<< HEAD
+=======
+    const serverArrayList = channels
+      .map((channel: Channel) => {
+        return {
+          name: (channel.data?.data?.server as string) ?? 'Unknown',
+          image: channel.data?.data?.image,
+        };
+      })
+      .filter((server: DiscordServer) => server.name !== 'Unknown')
+      .filter(
+        (server: DiscordServer, index, self) =>
+          index ===
+          self.findIndex((serverObject) => serverObject.name == server.name)
+      );
+    const serverSetX = new Set(serverArrayList);
+>>>>>>> b342500b1a191689c766d72f7ee4e83c123f18c2
     const serverSet: Set<DiscordServer> = new Set(
       channels
         .map((channel: Channel) => {

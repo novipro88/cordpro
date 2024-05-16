@@ -1,7 +1,10 @@
 'use client';
 
 import { DiscordServer } from '@/app/page';
+<<<<<<< HEAD
 import { MemberRequest, StreamVideoClient } from '@stream-io/video-client';
+=======
+>>>>>>> b342500b1a191689c766d72f7ee4e83c123f18c2
 import { createContext, useCallback, useContext, useState } from 'react';
 import { Channel, ChannelFilters, StreamChat } from 'stream-chat';
 import { DefaultStreamChatGenerics } from 'stream-chat-react';
@@ -9,12 +12,18 @@ import { v4 as uuid } from 'uuid';
 
 type DiscordState = {
   server?: DiscordServer;
+<<<<<<< HEAD
   callId: string | undefined;
+=======
+>>>>>>> b342500b1a191689c766d72f7ee4e83c123f18c2
   channelsByCategories: Map<string, Array<Channel<DefaultStreamChatGenerics>>>;
   changeServer: (server: DiscordServer | undefined, client: StreamChat) => void;
   createServer: (
     client: StreamChat,
+<<<<<<< HEAD
     videoClient: StreamVideoClient,
+=======
+>>>>>>> b342500b1a191689c766d72f7ee4e83c123f18c2
     name: string,
     imageUrl: string,
     userIds: string[]
@@ -25,6 +34,7 @@ type DiscordState = {
     category: string,
     userIds: string[]
   ) => void;
+<<<<<<< HEAD
   createCall: (
     client: StreamVideoClient,
     serverName: string,
@@ -32,17 +42,25 @@ type DiscordState = {
     userIds: string[]
   ) => Promise<void>;
   setCall: (callId: string | undefined) => void;
+=======
+>>>>>>> b342500b1a191689c766d72f7ee4e83c123f18c2
 };
 
 const initialValue: DiscordState = {
   server: undefined,
+<<<<<<< HEAD
   callId: undefined,
+=======
+>>>>>>> b342500b1a191689c766d72f7ee4e83c123f18c2
   channelsByCategories: new Map(),
   changeServer: () => {},
   createServer: () => {},
   createChannel: () => {},
+<<<<<<< HEAD
   createCall: async () => {},
   setCall: () => {},
+=======
+>>>>>>> b342500b1a191689c766d72f7ee4e83c123f18c2
 };
 
 const DiscordContext = createContext<DiscordState>(initialValue);
@@ -56,6 +74,10 @@ export const DiscordContextProvider: any = ({
 
   const changeServer = useCallback(
     async (server: DiscordServer | undefined, client: StreamChat) => {
+<<<<<<< HEAD
+=======
+      console.log('[changeServer] server: ', server);
+>>>>>>> b342500b1a191689c766d72f7ee4e83c123f18c2
       let filters: ChannelFilters = {
         type: 'messaging',
         members: { $in: [client.userID as string] },
@@ -64,10 +86,13 @@ export const DiscordContextProvider: any = ({
         filters.member_count = 2;
       }
 
+<<<<<<< HEAD
       console.log(
         '[DiscordContext - loadServerList] Querying channels for ',
         client.userID
       );
+=======
+>>>>>>> b342500b1a191689c766d72f7ee4e83c123f18c2
       const channels = await client.queryChannels(filters);
       const channelsByCategories = new Map<
         string,
@@ -108,12 +133,19 @@ export const DiscordContextProvider: any = ({
   const createServer = useCallback(
     async (
       client: StreamChat,
+<<<<<<< HEAD
       videoClient: StreamVideoClient,
+=======
+>>>>>>> b342500b1a191689c766d72f7ee4e83c123f18c2
       name: string,
       imageUrl: string,
       userIds: string[]
     ) => {
+<<<<<<< HEAD
       const messagingChannel = client.channel('messaging', uuid(), {
+=======
+      const channel = client.channel('messaging', uuid(), {
+>>>>>>> b342500b1a191689c766d72f7ee4e83c123f18c2
         name: 'Welcome',
         members: userIds,
         data: {
@@ -122,6 +154,7 @@ export const DiscordContextProvider: any = ({
           category: 'Text Channels',
         },
       });
+<<<<<<< HEAD
       const callId = uuid();
       const audioCall = videoClient.call('default', callId);
       const audioChannelMembers: MemberRequest[] = userIds.map((userId) => {
@@ -145,6 +178,14 @@ export const DiscordContextProvider: any = ({
         changeServer({ name, image: imageUrl }, client);
       } catch (err) {
         console.error(err);
+=======
+      try {
+        const response = await channel.create();
+        console.log('[createServer] Response: ', response);
+        changeServer({ name, image: imageUrl }, client);
+      } catch (err) {
+        console.log(err);
+>>>>>>> b342500b1a191689c766d72f7ee4e83c123f18c2
       }
     },
     [changeServer]
@@ -168,6 +209,10 @@ export const DiscordContextProvider: any = ({
         });
         try {
           const response = await channel.create();
+<<<<<<< HEAD
+=======
+          console.log('[createChannel] Response: ', response);
+>>>>>>> b342500b1a191689c766d72f7ee4e83c123f18c2
         } catch (err) {
           console.log(err);
         }
@@ -176,6 +221,7 @@ export const DiscordContextProvider: any = ({
     [myState.server?.name]
   );
 
+<<<<<<< HEAD
   const createCall = useCallback(
     async (
       client: StreamVideoClient,
@@ -219,12 +265,19 @@ export const DiscordContextProvider: any = ({
   const store: DiscordState = {
     server: myState.server,
     callId: myState.callId,
+=======
+  const store: DiscordState = {
+    server: myState.server,
+>>>>>>> b342500b1a191689c766d72f7ee4e83c123f18c2
     channelsByCategories: myState.channelsByCategories,
     changeServer: changeServer,
     createServer: createServer,
     createChannel: createChannel,
+<<<<<<< HEAD
     createCall: createCall,
     setCall: setCall,
+=======
+>>>>>>> b342500b1a191689c766d72f7ee4e83c123f18c2
   };
 
   return (

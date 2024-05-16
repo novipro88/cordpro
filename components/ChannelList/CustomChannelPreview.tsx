@@ -4,6 +4,11 @@ import {
 } from 'stream-chat-react';
 
 const CustomChannelPreview = (props: ChannelPreviewUIComponentProps) => {
+<<<<<<< HEAD
+=======
+  console.log('[CustomChannelPreview]');
+
+>>>>>>> b342500b1a191689c766d72f7ee4e83c123f18c2
   const { channel } = props;
   const { setActiveChannel } = useChatContext();
   return (
